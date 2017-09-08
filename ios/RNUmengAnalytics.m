@@ -1,5 +1,6 @@
 
 #import "RNUmengAnalytics.h"
+#import <UMMobClick/MobClick.h>
 
 @implementation RNUmengAnalytics
 RCT_EXPORT_MODULE();
