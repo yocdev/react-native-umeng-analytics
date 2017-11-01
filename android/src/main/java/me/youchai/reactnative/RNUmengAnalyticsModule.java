@@ -34,6 +34,11 @@ public class RNUmengAnalyticsModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void setAppVersion(String appVersion) {
+        // Only available on iOS platform. Here just do nothing.
+    }
+
+    @ReactMethod
     public void onEvent(String eventId) {
         MobclickAgent.onEvent(getCurrentActivity(), eventId);
     }
@@ -55,6 +60,17 @@ public class RNUmengAnalyticsModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void onEventValue(String eventId, ReadableMap parameters, int counter) {
+        Map<String, String> map = new HashMap<>();
+        ReadableMapKeySetIterator iterator = parameters.keySetIterator();
+        while (iterator.hasNextKey()) {
+            String key = iterator.nextKey();
+            map.put(key, parameters.getString(key));
+        }
+        MobclickAgent.onEventValue(getCurrentActivity(), eventId, map, counter);
+    }
+
+    @ReactMethod
     public void onPageBegin(String pageName) {
         MobclickAgent.onEvent(getCurrentActivity(), pageName);
     }
@@ -62,6 +78,21 @@ public class RNUmengAnalyticsModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void onPageEnd(String pageName) {
         MobclickAgent.onEvent(getCurrentActivity(), pageName);
+    }
+
+    @ReactMethod
+    public void onProfileSignIn(String puid) {
+        MobclickAgent.onProfileSignIn(puid);
+    }
+
+    @ReactMethod
+    public void onProfileSignIn(String puid, String provider) {
+        MobclickAgent.onProfileSignIn(puid, provider);
+    }
+
+    @ReactMethod
+    public void onProfileSignOff() {
+        MobclickAgent.onProfileSignOff();
     }
 
     @ReactMethod
