@@ -86,8 +86,8 @@ public class RNUmengAnalyticsModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void onProfileSignIn(String puid, String provider) {
-        MobclickAgent.onProfileSignIn(puid, provider);
+    public void onProfileSignIn(String provider, String puid) {
+        MobclickAgent.onProfileSignIn(provider, puid);
     }
 
     @ReactMethod
