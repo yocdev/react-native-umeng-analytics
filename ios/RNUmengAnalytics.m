@@ -43,7 +43,7 @@ RCT_EXPORT_METHOD(onProfileSignIn:(NSString *)puid) {
   [MobClick profileSignInWithPUID:puid];
 }
 
-RCT_EXPORT_METHOD(onProfileSignIn:(NSString *)puid provider:(NSString *)provider) {
+RCT_EXPORT_METHOD(onProfileSignIn:(NSString *)provider puid:(NSString *)puid) {
   [MobClick profileSignInWithPUID:puid provider:provider];
 }
 
